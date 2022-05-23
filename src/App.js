@@ -1,11 +1,18 @@
 import React from "react";
-import FrontForm from "./components/Form";
 import "./App.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Form from "./components/Form";
+import Repositories from "./components/Repositories";
 
 function App() {
   return (
     <div className="App">
-      <FrontForm></FrontForm>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Form />} />
+          <Route path="/repositories" element={<Repositories />} />
+        </Routes>
+      </Router>
     </div>
   );
 }

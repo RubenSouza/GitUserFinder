@@ -1,8 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-function FrontForm(props) {
+function Form(props) {
   const [user, setUser] = useState("");
+  useEffect(() => {
+    function handleEnter() {
+      window.addEventListener("keypress", event => {
+        if (event.key === "Enter") {
+          let btn = document.getElementById("button");
+          btn.click();
+        }
+      });
+    }
+    handleEnter();
+  }, []);
+
   function handleSearch() {
     axios
       .get(`https://api.github.com/users/${user}/repos`)
@@ -11,27 +23,32 @@ function FrontForm(props) {
 
   return (
     <div className="div--form">
-      <form className="my--form">
+      <div className="my--form">
         <div>
           <h1>Digite o Usuário</h1>
         </div>
         <div>
           <input
-            type="text"
+            type="search"
             value={user}
             name="User"
-            id="user"
+            id="user--form"
             className="input"
             onChange={e => setUser(e.target.value)}
           ></input>
-          <button className="input" type="button" onClick={handleSearch}>
+          <button
+            className="input"
+            type="button"
+            id="button"
+            onClick={handleSearch}
+          >
             {" "}
             Pesquisar
           </button>
         </div>
-      </form>
+      </div>
     </div>
   );
 }
 
-export default FrontForm;
+export default Form;
