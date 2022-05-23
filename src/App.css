@@ -1,16 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body {
   background-color: #bbb;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-.App {
   width: 100%;
+  height: 100vh;
   background-image: url(./assets/images/github.png);
   background-position: center center center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.App {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,4 +47,73 @@ body {
   margin-top: 8px;
   margin-right: 8px;
   padding: 8px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+  text-align: center;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+}
+
+#container {
+  width: 100%;
+  height: 100vh;
+  background-color: #bbb;
+}
+
+#repo--container {
+  margin-top: 50px;
+  width: 100%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#repo--container h2 {
+  padding-bottom: 15px;
+  font-size: 35px;
+  margin-bottom: 5px;
+}
+#list {
+  height: 100%;
+}
+
+#list li {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  width: 750px;
+  background-color: black;
+  margin-bottom: 15px;
+}
+
+#back--button {
+  background-color: black;
+  text-align: center;
+  font-size: 15px;
+  color: white;
+  width: 100px;
+  padding: 8px;
+  margin-bottom: 30px;
+}
+
+#error-message {
+  color: red;
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 550;
+  margin-top: 20px;
 }

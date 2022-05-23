@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Form(props) {
+  const [error, setError] = useState(false);
+  const history = useNavigate();
   const [user, setUser] = useState("");
   useEffect(() => {
     function handleEnter() {
@@ -18,7 +21,22 @@ function Form(props) {
   function handleSearch() {
     axios
       .get(`https://api.github.com/users/${user}/repos`)
-      .then(Response => console.log(Response.data));
+      .then(response => {
+        const repositories = response.data;
+        const repositoriesName = [];
+        repositories.map(repository => {
+          repositoriesName.push(repository.name);
+        });
+        localStorage.setItem(
+          "repositoriesNames",
+          JSON.stringify(repositoriesName)
+        );
+        setError(false);
+        history("/repositories");
+      })
+      .catch(error => {
+        setError(true);
+      });
   }
 
   return (
@@ -46,6 +64,7 @@ function Form(props) {
             Pesquisar
           </button>
         </div>
+        {error ? <p id="error-message">Ocorreu um erro!</p> : ""}
       </div>
     </div>
   );
