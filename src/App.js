@@ -1,13 +1,13 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import Form from "./components/Form";
 import Repositories from "./components/Repositories";
 
 function App() {
   return (
     <div className="App">
-      <Router>
+      <Router basename="/">
         <Routes>
           <Route path="/" element={<Form />} />
           <Route path="/repositories" element={<Repositories />} />
